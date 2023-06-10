@@ -1,0 +1,15 @@
+/** @format */
+
+body {
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    hsla(211, 66%, 87%, 1) 0%,
+    hsla(348, 67%, 88%, 1) 50%,
+    hsla(272, 26%, 72%, 1) 100%
+  );
+
+  font-family: "Open Sans", sans-serif;
+  padding: 5%;
+}
