@@ -8,12 +8,19 @@
 </div>
 <div>
     <div>
-        <textarea></textarea>
+        <textarea id="text-input"></textarea>
     </div>
 
     <button id="get-env-variable">Get Environment Variable</button>
     <div id="env-variable-container"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.min.js"></script>
+    <script>
+        var socket = io.connect();
+        $('#text-input').on('input', function() {
+            var message = $(this).val();
+            socket.emit('message', message);
+        });
+    </script>
 </div>
 {% endblock %}
