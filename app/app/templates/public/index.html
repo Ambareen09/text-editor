@@ -17,10 +17,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.min.js"></script>
     <script>
         var socket = io.connect();
-        $('#text-input').on('input', function() {
+        $('#text-input').on('input', function () {
             var message = $(this).val();
             socket.emit('message', message);
         });
     </script>
+
+    <h2>Users:</h2>
+    <ul id="user-list">
+        {% for user in users %}
+        <h3>{{ user.name }} - {{ user.email }}</h3>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
