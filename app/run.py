@@ -1,5 +1,6 @@
 from app import app, socketio
-import os
+import eventlet
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True)
+    eventlet.monkey_patch()
+    socketio.run(app, debug=True, host='0.0.0.0')

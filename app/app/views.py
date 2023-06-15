@@ -56,16 +56,18 @@ def get_users():
 def handle_message(data):
     text = data['text']
     user_id = data['user_id']
+    print(f"Received message: {data}")
 
-    # Save the text to the database
-    user = User.query.get(user_id)
-    new_text = Text(text=text, user=user)
-    db.session.add(new_text)
-    db.session.commit()
+    if len(text) >= 5:
+        # Save the text to the database
+        user = User.query.get(user_id)
+        new_text = Text(text=text, user=user)
+        db.session.add(new_text)
+        db.session.commit()
 
     # Broadcast the message to all connected clients
-    socketio.emit('message', {'text': text, 'user_id': user_id}, broadcast=True)
+    socketio.emit('message', {'text': text, 'user_id': user_id})
 
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True)
+    socketio.run(app, host='0.0.0.0', port=5000, debug=True)
