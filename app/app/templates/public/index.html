@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.min.js"></script>
     <script>
         var socket = io.connect();
-        var user_id = {{ user_id }};  // Pass the user ID from the server-side to the client-side JavaScript code
+        var user_id = {{ user_id }};
     
         $('#text-input').on('input', function () {
             var text = $(this).val();
@@ -27,7 +27,6 @@
     
         socket.on('message', function (data) {
             var text = data.text;
-            // Display the received message on the page
             var messageElement = $('<li>').text(text);
             $('#stored-texts').append(messageElement);
         });
